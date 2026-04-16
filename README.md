@@ -86,14 +86,57 @@ Then it pressure-tests the options and gives a practical 7-day move.
 
 Repo: https://github.com/skincareextra/danielle-ai-skills
 
-### LinkedIn post
-I just published my first public AI skill: **Expanding Possibilities**.
+### X post (results angle)
+I stopped brainstorming in circles and built this into a skill.
 
-Most people stop at brainstorming. This skill pushes an idea through 4 levels (1x, 25x, 100x, 1000x), pressure-tests blind spots, and recommends what to execute now with a 7-day action path.
+Input: one idea
+Output: 1x / 25x / 100x / 1000x + best move now + 7-day plan
 
-If you're building, scaling, or stuck between options, this framework helps you think bigger without losing execution reality.
+This is now public:
+https://github.com/skincareextra/danielle-ai-skills
 
-GitHub: https://github.com/skincareextra/danielle-ai-skills
+### X thread starter
+1/ I built my first public AI skill: **Expanding Possibilities**.
+
+2/ Problem it solves:
+Most ideas die at "sounds good." No pressure test, no decision, no execution.
+
+3/ What it does:
+- expands your idea (1x, 25x, 100x, 1000x)
+- pressure-tests blind spots
+- recommends the best level to pursue now
+- gives a 7-day execution move
+
+4/ Repo + release:
+https://github.com/skincareextra/danielle-ai-skills
+
+5/ If you test it, send me your before/after output.
+
+### Instagram caption (launch)
+Just dropped my first public AI skill: **Expanding Possibilities**.
+
+It helps turn one idea into clear execution:
+1x, 25x, 100x, 1000x + what to do next.
+
+No fluff. Real strategy + action.
+
+Code is live in my GitHub (link in bio):  
+github.com/skincareextra/danielle-ai-skills
+
+### Instagram story sequence (3 slides)
+Slide 1:  
+"I built my first public AI skill."
+
+Slide 2:  
+"It takes one idea -> expands it 1x/25x/100x/1000x -> tells you what to execute now."
+
+Slide 3:  
+"Want it? GitHub link in bio: danielle-ai-skills"
+
+### Instagram reel hook ideas
+- "I was tired of vague AI output, so I built this."
+- "If your ideas are big but messy, this framework fixes that."
+- "From one idea to an actionable 7-day plan in one run."
 
 ## Real use cases to publish
 
