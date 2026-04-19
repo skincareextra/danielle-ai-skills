@@ -1,0 +1,146 @@
+{
+  "contract_version": "1.0.0",
+  "module": "auth-engine",
+  "public_operations": [
+    {
+      "name": "authenticate",
+      "request": {
+        "type": "object",
+        "required": [
+          "email",
+          "password",
+          "client_id"
+        ],
+        "properties": {
+          "email": "string(email)",
+          "password": "string(min:8)",
+          "client_id": "string"
+        }
+      },
+      "response": {
+        "type": "object",
+        "required": [
+          "user_id",
+          "access_token",
+          "refresh_token",
+          "expires_in_seconds"
+        ],
+        "properties": {
+          "user_id": "string",
+          "access_token": "string(jwt)",
+          "refresh_token": "string",
+          "expires_in_seconds": "number"
+        }
+      },
+      "errors": [
+        "AUTH_INVALID_CREDENTIALS",
+        "AUTH_ACCOUNT_LOCKED",
+        "AUTH_RATE_LIMITED"
+      ]
+    },
+    {
+      "name": "refresh_session",
+      "request": {
+        "type": "object",
+        "required": [
+          "refresh_token",
+          "client_id"
+        ],
+        "properties": {
+          "refresh_token": "string",
+          "client_id": "string"
+        }
+      },
+      "response": {
+        "type": "object",
+        "required": [
+          "access_token",
+          "refresh_token",
+          "expires_in_seconds"
+        ],
+        "properties": {
+          "access_token": "string(jwt)",
+          "refresh_token": "string",
+          "expires_in_seconds": "number"
+        }
+      },
+      "errors": [
+        "AUTH_INVALID_TOKEN",
+        "AUTH_SESSION_REVOKED"
+      ]
+    },
+    {
+      "name": "authorize",
+      "request": {
+        "type": "object",
+        "required": [
+          "subject_id",
+          "action",
+          "resource"
+        ],
+        "properties": {
+          "subject_id": "string",
+          "action": "string",
+          "resource": "string",
+          "resource_owner_id": "string(optional)"
+        }
+      },
+      "response": {
+        "type": "object",
+        "required": [
+          "allowed"
+        ],
+        "properties": {
+          "allowed": "boolean",
+          "reason": "string(optional)"
+        }
+      },
+      "errors": [
+        "AUTH_SUBJECT_NOT_FOUND",
+        "AUTH_POLICY_ERROR"
+      ]
+    }
+  ],
+  "isolation_guarantees": {
+    "projects_must_not_access": [
+      "user credential hashes",
+      "session store internals",
+      "token signing keys"
+    ],
+    "projects_must_use": [
+      "only public_operations defined in this contract"
+    ],
+    "change_policy": {
+      "backward_compatible_changes": [
+        "add optional request fields",
+        "add optional response fields",
+        "add new operation"
+      ],
+      "breaking_changes_require": [
+        "contract_version major increment",
+        "migration notes in changelog"
+      ]
+    }
+  },
+  "dependency_ports": {
+    "required": [
+      {
+        "port": "identity_store",
+        "methods": [
+          "get_user_by_email(email)",
+          "get_user_roles(user_id)",
+          "save_refresh_token(session)",
+          "revoke_refresh_token(token)"
+        ]
+      }
+    ],
+    "optional": [
+      {
+        "port": "external_idp",
+        "methods": [
+          "validate_oauth_token(provider, token)"
+        ]
+      }
+    ]
+  }
+}

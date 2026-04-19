@@ -1,0 +1,115 @@
+{
+  "contract_version": "1.0.0",
+  "module": "data-engine",
+  "public_operations": [
+    {
+      "name": "get_repository",
+      "request": {
+        "type": "object",
+        "required": [
+          "entity"
+        ],
+        "properties": {
+          "entity": "string"
+        }
+      },
+      "response": {
+        "type": "object",
+        "required": [
+          "repository_handle"
+        ],
+        "properties": {
+          "repository_handle": "string"
+        }
+      },
+      "errors": [
+        "DATA_ENTITY_NOT_REGISTERED"
+      ]
+    },
+    {
+      "name": "run_query",
+      "request": {
+        "type": "object",
+        "required": [
+          "query_name"
+        ],
+        "properties": {
+          "query_name": "string",
+          "params": "object(optional)",
+          "tenant_id": "string(optional)"
+        }
+      },
+      "response": {
+        "type": "object",
+        "required": [
+          "rows"
+        ],
+        "properties": {
+          "rows": "array<object>",
+          "cursor": "string(optional)"
+        }
+      },
+      "errors": [
+        "DATA_QUERY_INVALID",
+        "DATA_QUERY_TIMEOUT"
+      ]
+    },
+    {
+      "name": "run_migration",
+      "request": {
+        "type": "object",
+        "required": [
+          "migration_id"
+        ],
+        "properties": {
+          "migration_id": "string",
+          "dry_run": "boolean(optional)"
+        }
+      },
+      "response": {
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "properties": {
+          "status": "string(applied|skipped|dry_run)"
+        }
+      },
+      "errors": [
+        "DATA_MIGRATION_FAILED"
+      ]
+    }
+  ],
+  "repository_contract": {
+    "required_methods": [
+      "find_by_id(id)",
+      "find_many(filter, options)",
+      "create(input)",
+      "update(id, patch)",
+      "delete(id)"
+    ],
+    "transaction_boundary": "Projects can request transactional execution only through data-engine APIs; direct driver transactions are forbidden."
+  },
+  "isolation_guarantees": {
+    "projects_must_not_access": [
+      "raw database credentials",
+      "database driver instances",
+      "connector private state"
+    ],
+    "projects_must_use": [
+      "public_operations defined in this contract",
+      "repository handles returned by get_repository"
+    ],
+    "change_policy": {
+      "backward_compatible_changes": [
+        "new optional params",
+        "new optional fields in response",
+        "new query_name values"
+      ],
+      "breaking_changes_require": [
+        "contract_version major increment",
+        "migration notes in changelog"
+      ]
+    }
+  }
+}

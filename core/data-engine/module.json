@@ -20,6 +20,8 @@
       "externalDataConnectors"
     ]
   },
+  "contract_file": "contract.json",
+  "isolation_boundary": "Projects may call only operations defined in contract.json and must not access drivers/credentials directly.",
   "notes": [
     "Scaffolded from fleet directive.",
     "GitHub repository artifacts are the source of truth for requirements and connector evolution."

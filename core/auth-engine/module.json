@@ -11,6 +11,7 @@
   "interfaces": {
     "inbound": [
       "authenticate(credentials)",
+      "refresh_session(refresh_token)",
       "authorize(subject, action, resource)"
     ],
     "outbound": [
@@ -18,6 +19,8 @@
       "external.idpProviders"
     ]
   },
+  "contract_file": "contract.json",
+  "isolation_boundary": "Projects may call only operations defined in contract.json. Internal stores, secrets, and signing keys are private to auth-engine.",
   "notes": [
     "Scaffolded from fleet directive.",
     "GitHub repository artifacts are the source of truth for requirements and contract evolution."
