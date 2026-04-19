@@ -1,0 +1,25 @@
+{
+  "name": "auth-engine",
+  "version": "0.1.0",
+  "purpose": "Reusable authentication and authorization engine for fleet projects.",
+  "responsibilities": [
+    "User identity lifecycle (signup, signin, password reset)",
+    "Session and token management",
+    "Role/permission checks",
+    "OAuth provider integration points"
+  ],
+  "interfaces": {
+    "inbound": [
+      "authenticate(credentials)",
+      "authorize(subject, action, resource)"
+    ],
+    "outbound": [
+      "data-engine.userStore",
+      "external.idpProviders"
+    ]
+  },
+  "notes": [
+    "Scaffolded from fleet directive.",
+    "GitHub repository artifacts are the source of truth for requirements and contract evolution."
+  ]
+}

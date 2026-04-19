@@ -1,0 +1,27 @@
+{
+  "name": "data-engine",
+  "version": "0.1.0",
+  "purpose": "Reusable data access and persistence engine for fleet projects.",
+  "responsibilities": [
+    "Database connection management",
+    "Repository/query abstractions",
+    "Schema migration hooks",
+    "Connector surface for external data providers"
+  ],
+  "interfaces": {
+    "inbound": [
+      "getRepository(entity)",
+      "runQuery(query, params)",
+      "runMigration(migrationId)"
+    ],
+    "outbound": [
+      "sqlDatabase",
+      "cacheLayer",
+      "externalDataConnectors"
+    ]
+  },
+  "notes": [
+    "Scaffolded from fleet directive.",
+    "GitHub repository artifacts are the source of truth for requirements and connector evolution."
+  ]
+}
