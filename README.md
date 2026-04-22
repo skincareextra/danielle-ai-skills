@@ -1,4 +1,4 @@
-# danielle-ai-skills
+# Expanding Possibilities
 
 A collection of public AI skills and thinking systems.
 
